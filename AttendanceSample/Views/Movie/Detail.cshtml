@@ -1,0 +1,40 @@
+﻿@model AttendanceSample.Entity.Movie
+
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Movie Detail</h2>
+
+@using (Html.BeginForm("Update", "Movie", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-6">
+            @Html.LabelFor(m => m.Name)
+            @Html.TextBoxFor(m => m.Name, new
+            {
+                @class = "form-control form-control-sm"
+            })
+            @Html.ValidationMessageFor(m => m.Name)
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-6">
+            @Html.LabelFor(m => m.NumberInStock)
+            @Html.TextBoxFor(m => m.NumberInStock, new
+            {
+                @class = "form-control form-control-sm"
+            })
+            @Html.ValidationMessageFor(m => m.NumberInStock)
+        </div>
+    </div>
+
+    @Html.HiddenFor(m => m.Id)
+    <div class="row">
+        <div class="col-sm-12">
+            <button type="submit" class="btn btn-outline-success" style="float: left;">Update</button>
+        </div>
+    </div>
+}

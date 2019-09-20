@@ -1,0 +1,87 @@
+﻿@{
+    ViewData["Title"] = "Movie";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>List of movie</h2>
+
+
+
+<table id="movies">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Movie</th>
+            <th>Genre</th>
+            @* <th>View Detail</th> *@
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+@section Scripts
+{
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var table = $("#movies").DataTable({
+                "processing": true, // for show progress bar  
+                "serverSide": true, // for process server side          
+                "orderMulti": false, // for disable multiple column at once  
+                "pageLength": 10,
+                "pagingType": "full_numbers",
+                order: [[0, "asc"]],
+                "ajax": {
+                    "url": "Movie/ListMovie",
+                    "type": "POST",
+                    "datatype": "json"
+                },
+
+                "columnDefs": [
+                    {
+                        "targets": [0],
+                        "searchable": false,
+                        "orderable": false
+                    },
+                    {
+                        "targets": [1],
+                        "searchable": false,
+                        "orderable": false
+                    },
+                    {
+                        "targets": [2],
+                        "searchable": false,
+                        "orderable": false
+                    }
+                ],
+
+                "columns": [
+                    {
+                        "data": "id",
+                        "name": "Id",
+                        "autoWidth": true
+                    },
+                    {
+                        "data": "name",
+                        "name": "Name",
+                        "autoWidth": true
+                    },
+                    {
+                        "data": "genre.name",
+                        "name": "Genre",
+                        "autoWidth": true
+                    }
+//                    {
+//                        "render": function (data, type, full, meta) {
+//                            return '<a href="/Movie/Detail/' + full.id + '">View Detail</a>';
+//                        }
+//                    }
+                ]
+            });
+        });
+    </script>
+}
+
+
+

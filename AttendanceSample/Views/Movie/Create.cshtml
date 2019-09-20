@@ -1,0 +1,58 @@
+﻿@model AttendanceSample.Service.DTO.MovieDto
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create Movie</h2>
+
+@using (Html.BeginForm("Create", "Movie", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-6">
+            @Html.LabelFor(m => m.Name)
+            @Html.TextBoxFor(m => m.Name, new
+            {
+                @class = "form-control form-control-sm"
+            })
+            @Html.ValidationMessageFor(m => m.Name)
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-6">
+            @Html.LabelFor(m => m.GenreId)
+            @Html.DropDownListFor(
+                m => m.GenreId, 
+                new List<SelectListItem>
+                {
+                    new SelectListItem {Value = "1", Text = "Action"},
+                    new SelectListItem {Value = "2", Text = "Horror"},
+                    new SelectListItem {Value = "3", Text = "Cartoon"},
+                    new SelectListItem {Value = "4", Text = "Romance"},
+                    new SelectListItem {Value = "5", Text = "Sci-fi"},
+                }, 
+                new {@class = "form-control form-control-sm"})
+            @Html.ValidationMessageFor(m => m.GenreId)
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-6">
+            @Html.LabelFor(m => m.NumberInStock)
+            @Html.TextBoxFor(m => m.NumberInStock, new
+            {
+                @class = "form-control form-control-sm"
+            })
+            @Html.ValidationMessageFor(m => m.NumberInStock)
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <button type="submit" class="btn btn-outline-success" style="float: left;">Create</button>
+        </div>
+    </div>
+}
+
