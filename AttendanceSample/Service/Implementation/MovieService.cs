@@ -39,7 +39,8 @@ namespace AttendanceSample.Service.Implementation
             var entity = new Movie
             {
                 Name = movie.Name,
-                GenreId = movie.GenreId
+                GenreId = movie.GenreId,
+                NumberInStock = movie.NumberInStock
             };
             return _movieRepository.Insert(entity);
         }
