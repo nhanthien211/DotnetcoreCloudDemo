@@ -13,7 +13,7 @@
             <th>Id</th>
             <th>Movie</th>
             <th>Genre</th>
-            @* <th>View Detail</th> *@
+            <th>View Detail</th>
         </tr>
     </thead>
     <tbody>
@@ -71,12 +71,12 @@
                         "data": "genre.name",
                         "name": "Genre",
                         "autoWidth": true
+                    },
+                    {
+                        "render": function (data, type, full, meta) {
+                            return '<a href="/Movie/Detail/' + full.id + '">View Detail</a>';
+                        }
                     }
-//                    {
-//                        "render": function (data, type, full, meta) {
-//                            return '<a href="/Movie/Detail/' + full.id + '">View Detail</a>';
-//                        }
-//                    }
                 ]
             });
         });
